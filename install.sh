@@ -7,6 +7,11 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+if ! command -v xray &> /dev/null; then
+  echo "Please install xray before running this script."
+  exit 1
+fi
+
 DATA_DIR="$HOME/.xray"
 PRIVATE_KEY_FILE="$DATA_DIR/private_key"
 PUBLIC_KEY_FILE="$DATA_DIR/public_key"
@@ -48,6 +53,9 @@ jq --arg new_key "$PRIVATE_KEY" '.inbounds[0].streamSettings.realitySettings.pri
 mv "$TEMP_FILE" "$CONFIG_TEMP"
 
 mv "$CONFIG_TEMP" "$CONFIG_FILE"
+chmod 644 "$CONFIG_FILE"
+
+systemctl restart xray.service
 
 echo "$UUID"
 echo "$PUBLIC_KEY"
