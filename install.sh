@@ -54,7 +54,11 @@ mv "$TEMP_FILE" "$CONFIG_FILE"
 rm -f "$CONFIG_TEMP"
 chmod 644 "$CONFIG_FILE"
 
-systemctl restart xray.service
+SERVICE_NAME="xray.service"
+if ! systemctl -q is_enabled "$SERVICE_NAME"; then
+    systemctl enable "$SERVICE_NAME"
+fi
+systemctl restart "$SERVICE_NAME"
 
 echo "$UUID"
 echo "$PUBLIC_KEY"

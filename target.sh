@@ -21,4 +21,6 @@ jq --arg new_target "$TARGET" \
 mv $TEMP_FILE $CONFIG_FILE
 chmod 644 $CONFIG_FILE
 
+systemctl restart xray.service
+
 echo "OK"
