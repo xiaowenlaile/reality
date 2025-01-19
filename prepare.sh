@@ -7,6 +7,12 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+export DEBIAN_FRONTEND=noninteractive
+
+apt -y update
+apt -y upgrade
+apt -y install curl unzip jq nano
+
 if command -v ufw &> /dev/null; then
     ufw disable
 elif command -v iptables &> /dev/null; then
