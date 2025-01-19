@@ -19,5 +19,6 @@ jq --arg new_target "$TARGET" \
     | .inbounds[0].streamSettings.realitySettings.serverNames[0] = $new_sn' \
     "$CONFIG_FILE" > "$TEMP_FILE"
 mv $TEMP_FILE $CONFIG_FILE
+chmod 644 $CONFIG_FILE
 
 echo "OK"
