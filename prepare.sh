@@ -15,7 +15,7 @@ apt -y install curl unzip jq nano
 
 if command -v ufw &> /dev/null; then
     ufw disable
-elif command -v iptables &> /dev/null; then
+elif [[ -f /etc/iptables/rules.v4 ]]; then
     iptables -F
     iptables -X
     iptables -P INPUT ACCEPT

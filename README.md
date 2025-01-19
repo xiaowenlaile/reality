@@ -17,7 +17,7 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 
 ## 4. 自定义目标域名
 ```
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/install.sh)" x "替换为目标域名"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/target.sh)" x "替换为目标域名"
 ```
 
 ## 通用域名

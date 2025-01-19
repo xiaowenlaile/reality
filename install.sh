@@ -55,7 +55,7 @@ rm -f "$CONFIG_TEMP"
 chmod 644 "$CONFIG_FILE"
 
 SERVICE_NAME="xray.service"
-if ! systemctl -q is_enabled "$SERVICE_NAME"; then
+if ! systemctl -q is-enabled "$SERVICE_NAME"; then
     systemctl enable "$SERVICE_NAME"
 fi
 systemctl restart "$SERVICE_NAME"
