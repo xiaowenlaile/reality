@@ -45,14 +45,13 @@ CONFIG_TEMP=$(mktemp)
 curl -fsSL $CONFIG_URL -o $CONFIG_TEMP
 
 TEMP_FILE=$(mktemp)
-jq --arg new_id "$UUID" '.inbounds[0].settings.clients[0].id = $new_id' "$CONFIG_TEMP" > "$TEMP_FILE"
-mv "$TEMP_FILE" "$CONFIG_TEMP"
-
-TEMP_FILE=$(mktemp)
-jq --arg new_key "$PRIVATE_KEY" '.inbounds[0].streamSettings.realitySettings.privateKey = $new_key' "$CONFIG_TEMP" > "$TEMP_FILE"
-mv "$TEMP_FILE" "$CONFIG_TEMP"
-
-mv "$CONFIG_TEMP" "$CONFIG_FILE"
+jq --arg new_id "$UUID" \
+    --arg new_key "$PRIVATE_KEY" \
+    '.inbounds[0].settings.clients[0].id = $new_id
+    | .inbounds[0].streamSettings.realitySettings.privateKey = $new_key' \
+    "$CONFIG_TEMP" > "$TEMP_FILE"
+mv "$TEMP_FILE" "$CONFIG_FILE"
+rm -f "$CONFIG_TEMP"
 chmod 644 "$CONFIG_FILE"
 
 systemctl restart xray.service
