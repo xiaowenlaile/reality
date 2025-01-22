@@ -1,5 +1,6 @@
 #!/bin/bash
 # https://www.youtube.com/@xiaowenlaile
+# https://www.youtube.com/channel/UCyI0W67BSnkAdzToVLH97Cg
 set -euo pipefail
 
 if [[ $EUID -ne 0 ]]; then
@@ -50,7 +51,18 @@ jq --arg new_id "$UUID" \
     '.inbounds[0].settings.clients[0].id = $new_id
     | .inbounds[0].streamSettings.realitySettings.privateKey = $new_key' \
     "$CONFIG_TEMP" > "$TEMP_FILE"
-mv "$TEMP_FILE" "$CONFIG_FILE"
+
+if [[ ! -f $CONFIG_FILE ]]; then
+  mv "$TEMP_FILE" "$CONFIG_FILE"
+elif jq -e '. == {}' "$CONFIG_FILE" > /dev/null; then
+  mv "$TEMP_FILE" "$CONFIG_FILE"
+else
+  BACKUP_TIME=$(date +%Y%m%d_%H%M%S)
+  BACKUP_FILE="$DATA_DIR/config_${BACKUP_TIME}.json"
+  mv "$CONFIG_FILE" "$BACKUP_FILE"
+  mv "$TEMP_FILE" "$CONFIG_FILE"
+fi
+
 rm -f "$CONFIG_TEMP"
 chmod 644 "$CONFIG_FILE"
 
