@@ -61,10 +61,11 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 
 ### 推荐使用以下工具进行验证：
 
-* **BGP Tools** [https://bgp.tools](https://bgp.tools/): 此工具可以查找相邻 IP 地址的域名信息
+* **Chrome 开发者工具**: 在 Chrome 浏览器中访问目标网站，然后按下 F12 键打开开发者工具，切换到 “安全” (Security) 标签页进行查看。
 * **Site24x7 TLS 检测工具** [https://www.site24x7.com/zhcn/tools/tls-checker.html](https://www.site24x7.com/zhcn/tools/tls-checker.html): 此工具可以快速检测目标域名是否支持 TLS 1.3。
 * **Site24x7 HTTP/2 检测工具** [https://www.site24x7.com/zhcn/tools/http2-tester.html](https://www.site24x7.com/zhcn/tools/http2-tester.html): 此工具可以快速检测目标域名是否支持 HTTP/2。
 * **检测是否使用 Cloudflare CDN**： 在目标网址后面加上 `/cdn-cgi/trace/` 进行访问。例如，访问 `www.example.com/cdn-cgi/trace/`。如果返回的信息中包含 `fl=` 字段，则表示该网站使用了 Cloudflare CDN。
+* **BGP Tools** [https://bgp.tools](https://bgp.tools/): 此工具可以查找相邻 IP 地址的域名信息
 
 ### 可以供选择的通用域名
 
@@ -76,24 +77,8 @@ www.lovelive-anime.jp
 www.tesla.com
 www.nvidia.com
 www.sap.com
-
-Apple:
-gateway.icloud.com
-itunes.apple.com
-swdist.apple.com
-swcdn.apple.com
-updates.cdn-apple.com
-mensura.cdn-apple.com
-osxapps.itunes.apple.com
-aod.itunes.apple.com
-
-Microsoft:
-www.microsoft.com
 cdn-dynmedia-1.microsoft.com
 update.microsoft
-software.download.prss.microsoft.com
-
-Amazon:
 s0.awsstatic.com
 d1.awsstatic.com
 images-na.ssl-images-amazon.com
