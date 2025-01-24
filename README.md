@@ -1,6 +1,6 @@
 # Xray REALITY 服务器端快速部署方案
 
-#### 本方案旨在帮助用户快速部署基于 Xray-core 的 REALITY 协议服务器，以实现更安全、更高效的网络代理。目前仅支持 Ubuntu 和 Debian 操作系统。
+**本方案旨在帮助用户快速部署基于 Xray-core 的 REALITY 协议服务器，以实现更安全、更高效的网络代理。目前仅支持 Ubuntu 和 Debian 操作系统。**
 
 ## 特点
 
@@ -14,6 +14,8 @@
 
 *   一台拥有公网 IP 的 Linux VPS (Ubuntu 或 Debian)
 *   以 root 用户或具有 sudo 权限的用户身份登录 VPS
+
+**[Windows 用户使用 PowerShell SSH 登录 VPS 指南](https://github.com/xiaowenlaile/powershell-ssh/)**
 
 ## 部署步骤
 
@@ -51,21 +53,21 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 
 ### 如何选择合适的 REALITY 目标域名？
 
-目标域名必须符合以下条件：
+目标域名条件：
 
-* **在中国大陆可直连访问的国外网站**
-* **支持 TLS 1.3**
-* **支持 HTTP/2**
-* **未使用 Cloudflare CDN**
-* **目标 IP 地址与 VPS IP 地址相似（非必需）**
+*   **在中国大陆可直连访问的国外网站**
+*   **支持 TLS 1.3**
+*   **支持 HTTP/2**
+*   **未使用 Cloudflare CDN**
+*   目标 IP 地址与 VPS IP 地址相似（非必需）
 
 ### 推荐使用以下工具进行验证：
 
-* **Chrome 开发者工具**: 在 Chrome 浏览器中访问目标网站，然后按下 F12 键打开开发者工具，切换到 “安全” (Security) 标签页进行查看。
-* **Site24x7 TLS 检测工具** [https://www.site24x7.com/zhcn/tools/tls-checker.html](https://www.site24x7.com/zhcn/tools/tls-checker.html): 此工具可以快速检测目标域名是否支持 TLS 1.3。
-* **Site24x7 HTTP/2 检测工具** [https://www.site24x7.com/zhcn/tools/http2-tester.html](https://www.site24x7.com/zhcn/tools/http2-tester.html): 此工具可以快速检测目标域名是否支持 HTTP/2。
-* **检测是否使用 Cloudflare CDN**： 在目标网址后面加上 `/cdn-cgi/trace/` 进行访问。例如，访问 `www.example.com/cdn-cgi/trace/`。如果返回的信息中包含 `fl=` 字段，则表示该网站使用了 Cloudflare CDN。
-* **BGP Tools** [https://bgp.tools](https://bgp.tools/): 此工具可以查找相邻 IP 地址的域名信息
+*   **Chrome 开发者工具**: 在 Chrome 浏览器中访问目标网站，然后按下 F12 键打开开发者工具，切换到 “安全” (Security) 标签页进行查看。
+*   **Site24x7 TLS 检测工具** [https://www.site24x7.com/zhcn/tools/tls-checker.html](https://www.site24x7.com/zhcn/tools/tls-checker.html): 此工具可以快速检测目标域名是否支持 TLS 1.3。
+*   **Site24x7 HTTP/2 检测工具** [https://www.site24x7.com/zhcn/tools/http2-tester.html](https://www.site24x7.com/zhcn/tools/http2-tester.html): 此工具可以快速检测目标域名是否支持 HTTP/2。
+*   **检测是否使用 Cloudflare CDN**： 在目标网址后面加上 `/cdn-cgi/trace/` 进行访问。例如，访问 `www.example.com/cdn-cgi/trace/`。如果返回的信息中包含 `fl=` 字段，则表示该网站使用了 Cloudflare CDN。
+*   **BGP Tools** [https://bgp.tools](https://bgp.tools/): 此工具可以查找相邻 IP 地址的域名信息
 
 ### 可以供选择的通用域名
 
@@ -88,9 +90,9 @@ player.live-video.net
 
 ## 关于回国流量
 
-#### 本方案生成的配置文件默认禁用回国流量，以提高安全性。这意味着在使用全局代理时，您将无法访问国内网站。如果需要打开回国流量，请执行以下命令：
+**本方案生成的配置文件默认禁用回国流量，以提高安全性。这意味着在使用全局代理时，您将无法访问国内网站。如果需要打开回国流量，请执行以下命令。**
 
-#### 重要提示： 打开回国流量会增加流量特征被识别的风险，请根据自身需求权衡。
+**重要提示：打开回国流量会增加流量特征被识别的风险，请根据自身需求权衡。**
 
 ```
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/geoipcn.sh)"
