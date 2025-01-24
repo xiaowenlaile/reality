@@ -43,11 +43,28 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 
 ### 4. 自定义目标域名
 
-此步骤允许您自定义 REALITY 协议的目标域名。将 "www.airbnb.com" 替换为您想要使用的域名。
+此步骤允许您自定义 REALITY 协议的目标域名。将 `www.airbnb.com` 替换为您想要使用的域名。
 
 ```
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/target.sh)" x www.airbnb.com
 ```
+
+### 如何选择合适的 REALITY 目标域名？
+
+目标域名必须符合以下条件：
+
+* **在中国大陆可直连访问的国外网站**
+* **支持 TLS 1.3**
+* **支持 HTTP/2**
+* **未使用 Cloudflare CDN**
+* **目标 IP 地址与 VPS IP 地址相似（非必需）**
+
+### 推荐使用以下工具进行验证：
+
+* **BGP Tools** [https://bgp.tools](https://bgp.tools/): 此工具可以查找相邻 IP 地址的域名信息
+* **Site24x7 TLS 检测工具** [https://www.site24x7.com/zhcn/tools/tls-checker.html](https://www.site24x7.com/zhcn/tools/tls-checker.html): 此工具可以快速检测目标域名是否支持 TLS 1.3。
+* **Site24x7 HTTP/2 检测工具** [https://www.site24x7.com/zhcn/tools/http2-tester.html](https://www.site24x7.com/zhcn/tools/http2-tester.html): 此工具可以快速检测目标域名是否支持 HTTP/2。
+* **检测是否使用 Cloudflare CDN**： 在目标网址后面加上 `/cdn-cgi/trace/` 进行访问。例如，访问 `www.example.com/cdn-cgi/trace/`。如果返回的信息中包含 `fl=` 字段，则表示该网站使用了 Cloudflare CDN。
 
 ### 可以供选择的通用域名
 
