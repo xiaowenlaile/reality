@@ -1,6 +1,6 @@
 # Xray REALITY 服务器端快速部署方案
 
-##### 本方案旨在帮助用户快速部署基于 Xray-core 的 REALITY 协议服务器，以实现更安全、更高效的网络代理。目前仅支持 Ubuntu 和 Debian 操作系统。
+#### 本方案旨在帮助用户快速部署基于 Xray-core 的 REALITY 协议服务器，以实现更安全、更高效的网络代理。目前仅支持 Ubuntu 和 Debian 操作系统。
 
 ## 特点
 
@@ -43,10 +43,10 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 
 ### 4. 自定义目标域名
 
-此步骤允许您自定义 REALITY 协议的目标域名。将 "替换为目标域名" 替换为您想要使用的域名。
+此步骤允许您自定义 REALITY 协议的目标域名。将 "www.airbnb.com" 替换为您想要使用的域名。
 
 ```
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/target.sh)" x "替换为目标域名"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/target.sh)" x www.airbnb.com
 ```
 
 ### 可以供选择的通用域名
@@ -86,7 +86,7 @@ player.live-video.net
 
 ## 关于回国流量
 
-##### 本方案生成的配置文件默认禁用回国流量，以提高安全性。这意味着在使用全局代理时，您将无法访问国内网站。如果需要打开回国流量，请执行以下命令：
+#### 本方案生成的配置文件默认禁用回国流量，以提高安全性。这意味着在使用全局代理时，您将无法访问国内网站。如果需要打开回国流量，请执行以下命令：
 
 #### 重要提示： 打开回国流量会增加流量特征被识别的风险，请根据自身需求权衡。
 
