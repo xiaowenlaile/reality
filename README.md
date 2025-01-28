@@ -2,6 +2,8 @@
 
 **本方案旨在帮助用户快速部署基于 Xray-core 的 REALITY 协议服务器，以实现更安全、更高效的网络代理。目前仅支持 Ubuntu 和 Debian 操作系统。**
 
+**视频演示：[https://www.youtube.com/watch?v=XoTJjcs4IkE](https://www.youtube.com/watch?v=XoTJjcs4IkE)**
+
 ## 特点
 
 *   **快速部署：** 使用一键脚本简化安装和配置过程。
@@ -12,8 +14,8 @@
 
 ## 准备工作
 
-*   一台拥有公网 IP 的 Linux VPS (Ubuntu 或 Debian)
-*   以 root 用户或具有 sudo 权限的用户身份登录 VPS
+*   **一台拥有公网 IP 的 Linux VPS (Ubuntu 或 Debian)**
+*   **以 root 用户或具有 sudo 权限的用户身份登录 VPS**
 
 **[Windows 用户使用 PowerShell SSH 登录 VPS 指南](https://github.com/xiaowenlaile/powershell-ssh/)**
 
@@ -37,7 +39,7 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/XTLS/Xray-install/r
 
 ### 3. 一键脚本生成配置文件
 
-此步骤将生成 Xray 的 config.json 配置文件，其中包含 REALITY 协议的配置。
+此步骤将生成 Xray 的 config.json 配置文件，其中包含 REALITY 协议的配置。**默认配置下，脚本将使用 `www.airbnb.com` 作为目标域名。你可以执行第4步的命令进行自定义**
 
 ```
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/reality/refs/heads/master/install.sh)"
@@ -56,7 +58,7 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiaowenlaile/realit
 目标域名条件：
 
 *   **在中国大陆可直连访问的国外网站**
-*   **支持 TLS 1.3**
+*   **支持 TLS 1.3 和 X25519 密钥交换**
 *   **支持 HTTP/2**
 *   **未使用 Cloudflare CDN**
 *   目标 IP 地址与 VPS IP 地址相似（非必需）
